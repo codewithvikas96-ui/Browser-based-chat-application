@@ -106,14 +106,21 @@ git push -u origin main
 
 4. Click Create/Deploy Web Service
 
-Step 5: Access Your App
-Render will give you a public URL like:
-
-Code
+### Step 5: Access Your App
+- Render will give you a public URL like:
+```Code
 https://your-app-name.onrender.com
-Open it in your browser and start chatting 🎉
+```
+- Open it in your browser and start chatting 🎉
 
-## Usage
+---
+
+## 🌐 Live Demo
+You can try the application directly here:
+👉 Encrypted Chat App on Render [Click Here](https://browser-based-chat-application.onrender.com)
+---
+
+## 📝 Usage
 
 ### Creating a Room
 
@@ -138,14 +145,18 @@ Open it in your browser and start chatting 🎉
 - **Toggle Dark Mode**: Click the 🌙/☀️ button to switch themes
 - **Leave Chat**: Click the 🚪 button to return to the landing page
 
-## Security Features
+---
+
+## 🔐 Security Features
 
 - **End-to-End Encryption**: All messages are encrypted using Fernet encryption before storage
 - **In-Memory Storage**: No persistent database - data exists only during active sessions
 - **Room-Based Encryption**: Each room has its own unique encryption key
 - **Secure Key Sharing**: Encryption keys are shared securely with room members via WebSocket
 
-## Architecture
+---
+
+## 🎯 Architecture
 
 ### In-Memory Data Structure
 
@@ -164,10 +175,11 @@ Open it in your browser and start chatting 🎉
 - `user_list_update`: Update online user list
 - `user_typing`: Show/hide typing indicator
 
-## Project Structure
+---
+
+## 📂 Project Structure
 
 ```
-.
 ├── app.py                  # Main Flask application with WebSocket handlers
 ├── requirements.txt        # Python dependencies
 ├── README.md              # This file
@@ -184,12 +196,16 @@ Open it in your browser and start chatting 🎉
         └── chat.js       # Client-side JavaScript for chat functionality
 ```
 
+---
+
 ## Performance Optimizations
 
 - **Message Limit**: Only last 100 messages stored per room
 - **Message History**: Only last 50 messages sent to new users
 - **Efficient WebSocket**: Event-driven architecture for low latency
 - **Client-Side Rendering**: Smooth UI updates without page refreshes
+
+---
 
 ## Browser Compatibility
 
@@ -198,6 +214,8 @@ Open it in your browser and start chatting 🎉
 - Safari (latest)
 - Opera (latest)
 
+---
+
 ## Limitations
 
 - **No Persistent Storage**: All data is lost when the server restarts
@@ -205,7 +223,9 @@ Open it in your browser and start chatting 🎉
 - **Single Server**: Not designed for horizontal scaling
 - **Memory Based**: Limited by available server memory
 
-## Future Enhancements
+---
+
+## 💡 Future Enhancements
 
 - [ ] File sharing support
 - [ ] Message reactions
@@ -215,14 +235,18 @@ Open it in your browser and start chatting 🎉
 - [ ] Multi-server support
 - [ ] Voice/video chat integration
 
-## License
+---
+
+## 📜 License
 
 This project is open source and available for educational and personal use.
 
-## Contributing
+---
+## 💛 Contributing
 
 Feel free to fork this project and submit pull requests for any improvements!
 
+---
 ## Support
 
 For issues or questions, please open an issue on the repository.
