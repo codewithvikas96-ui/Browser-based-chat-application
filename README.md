@@ -51,7 +51,7 @@ A browser-based, end-to-end encrypted, real-time chat application built with Fla
 
 ---
 
-# 🚀 Deployment (Free Hosting on Render)
+## 🚀 Deployment (Free Hosting on Render)
 You can deploy this app online for free using [Render](https://render.com)
 
 ### Step 1: Prepare Your Project
@@ -118,6 +118,7 @@ https://your-app-name.onrender.com
 ## 🌐 Live Demo
 You can try the application directly here:
 👉 Encrypted Chat App on Render [Click Here](https://browser-based-chat-application.onrender.com)
+
 ---
 
 ## 📝 Usage
