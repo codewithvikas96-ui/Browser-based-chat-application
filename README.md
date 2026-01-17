@@ -94,9 +94,9 @@ git push -u origin main
 3. Configure:
    - **Environment:** Python 3.x
    - Build Command:
-         ```bash
-         pip install -r requirements.txt
-         ```
+     ```bash
+     pip install -r requirements.txt
+     ```
    - **Start Command:**
 
 bash
