@@ -115,6 +115,54 @@ https://your-app-name.onrender.com
 
 ---
 
+## 📱 Run on Mobile (Local Network)  
+You can also use the application on your mobile phone without deploying it online, as long as your phone and computer are connected to the same Wi‑Fi network.
+
+### Steps:
+1. **Find your system’s local IP address**
+   - **On Windows:**  
+      Open Command Prompt and run:
+         ```bash
+         ipconfig
+         ```
+      Look for the `IPv4 Address` (e.g., `192.168.1.5`).
+
+On macOS/Linux:
+Open Terminal and run:
+
+bash
+ifconfig
+Look for the inet address under your active network (e.g., 192.168.1.5).
+
+Run the Flask app
+
+bash
+python app.py
+Access from your mobile browser
+
+On your phone, open a browser and type:
+
+Code
+http://<your-system-ip>:5000
+Example:
+
+Code
+http://192.168.1.5:5000
+Start chatting
+
+You’ll see the same landing page on your mobile.
+
+Create or join rooms and chat in real time, just like on desktop.
+
+⚠️ Notes
+Both devices must be on the same Wi‑Fi network.
+
+This works only while the Flask server is running on your computer.
+
+No internet deployment is required — everything stays local.
+
+---
+
 ## 🌐 Live Demo
 You can try the application directly here:  
 👉 Encrypted Chat App on Render [Click Here](https://browser-based-chat-application.onrender.com)
