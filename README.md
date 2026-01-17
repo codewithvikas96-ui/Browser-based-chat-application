@@ -98,12 +98,13 @@ git push -u origin main
      pip install -r requirements.txt
      ```
    - **Start Command:**
+     ```bash
+     gunicorn --worker-class eventlet -w 1 app:app
+     ```
+     
+   - **Instance Type: Free**
 
-bash
-gunicorn --worker-class eventlet -w 1 app:app
-Instance Type: Free
-
-Click Create Web Service
+4. Click Create/Deploy Web Service
 
 Step 5: Access Your App
 Render will give you a public URL like:
