@@ -85,9 +85,8 @@ git push -u origin main
 ```
 
 ### Step 3: Create Render Account
-Go to render.com
-
-Sign up with GitHub and authorize access to your repo
+- Go to [render.com](render.com)
+- Sign up with GitHub and authorize access to your repo
 
 Step 4: Deploy Web Service
 Click New + → Web Service
