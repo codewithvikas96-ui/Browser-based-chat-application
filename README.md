@@ -1,22 +1,25 @@
-# End-to-End Encrypted Real-Time Chat Application
+# 🔐 End-to-End Encrypted Real-Time Chat Application
 
 A browser-based, end-to-end encrypted, real-time chat application built with Flask and WebSockets. All communication is handled in-memory without any database, ensuring privacy and fast performance.
+---
 
-## Features
+## ✨ Features
 
-✨ **Animated Landing Page** - Beautiful, engaging landing page with smooth animations
-🔐 **End-to-End Encryption** - Messages are encrypted using Fernet symmetric encryption
-⚡ **Real-Time Messaging** - Instant message delivery using WebSocket technology
-👥 **Multi-User Support** - Multiple users can chat simultaneously in rooms
-🎨 **Emoji Avatars** - Choose from 20+ emoji avatars to personalize your profile
-🌙 **Dark Mode** - Toggle between light and dark themes for better usability
-⌨️ **Typing Indicators** - See when others are typing, just like WhatsApp/Telegram
-📊 **Live User List** - Real-time display of online users with total count
-💬 **System Messages** - Automatic notifications when users join or leave
-📋 **Room ID Sharing** - Easy-to-copy room IDs for inviting others
-📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
+- ✨ **Animated Landing Page** - Beautiful, engaging landing page with smooth animations
+- 🔐 **End-to-End Encryption** - Messages are encrypted using Fernet symmetric encryption
+- ⚡ **Real-Time Messaging** - Instant message delivery using WebSocket technology
+- 👥 **Multi-User Support** - Multiple users can chat simultaneously in rooms
+- 🎨 **Emoji Avatars** - Choose from 20+ emoji avatars to personalize your profile
+- 🌙 **Dark Mode** - Toggle between light and dark themes for better usability
+- ⌨️ **Typing Indicators** - See when others are typing, just like WhatsApp/Telegram
+- 📊 **Live User List** - Real-time display of online users with total count
+- 💬 **System Messages** - Automatic notifications when users join or leave
+- 📋 **Room ID Sharing** - Easy-to-copy room IDs for inviting others
+- 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
 
-## Technology Stack
+---
+
+## ⚒️ Technology Stack
 
 - **Backend**: Flask (Python)
 - **Real-Time Communication**: Flask-SocketIO (WebSockets)
@@ -24,7 +27,9 @@ A browser-based, end-to-end encrypted, real-time chat application built with Fla
 - **Frontend**: HTML5, CSS3, JavaScript
 - **Storage**: In-memory (no database required)
 
-## Installation
+---
+
+## 📩 Installation (local)
 
 1. **Clone or download this repository**
 
@@ -42,6 +47,71 @@ A browser-based, end-to-end encrypted, real-time chat application built with Fla
    ```
    http://localhost:5000
    ```
+
+---
+
+# 🚀 Deployment (Free Hosting on Render)
+You can deploy this app online for free using [Render](https://render.com)
+
+### Step 1: Prepare Your Project
+- **Ensure you have these files in the root directory:**
+ - `app.py`
+ - `requirements.txt`
+ - `Procfile`
+
+- **Example `requirements.txt`:**
+```txt
+flask
+flask-socketio
+cryptography
+gunicorn
+eventlet
+
+```
+Example Procfile:
+
+txt
+web: gunicorn --worker-class eventlet -w 1 app:app
+Step 2: Push Code to GitHub
+bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/yourusername/encrypted-chat.git
+git push -u origin main
+Step 3: Create Render Account
+Go to render.com
+
+Sign up with GitHub and authorize access to your repo
+
+Step 4: Deploy Web Service
+Click New + → Web Service
+
+Select your GitHub repo
+
+Configure:
+
+Environment: Python 3.x
+
+Build Command:
+
+bash
+pip install -r requirements.txt
+Start Command:
+
+bash
+gunicorn --worker-class eventlet -w 1 app:app
+Instance Type: Free
+
+Click Create Web Service
+
+Step 5: Access Your App
+Render will give you a public URL like:
+
+Code
+https://your-app-name.onrender.com
+Open it in your browser and start chatting 🎉
 
 ## Usage
 
