@@ -88,20 +88,16 @@ git push -u origin main
 - Go to [render.com](https://render.com)
 - Sign up with GitHub and authorize access to your repo
 
-Step 4: Deploy Web Service
-Click New + → Web Service
-
-Select your GitHub repo
-
-Configure:
-
-Environment: Python 3.x
-
-Build Command:
-
-bash
-pip install -r requirements.txt
-Start Command:
+### Step 4: Deploy Web Service
+1. Click New + → Web Service
+2. Select your GitHub repo
+3. Configure:
+   - **Environment:** Python 3.x
+   - Build Command:
+         ```bash
+         pip install -r requirements.txt
+         ```
+   - **Start Command:**
 
 bash
 gunicorn --worker-class eventlet -w 1 app:app
