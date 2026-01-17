@@ -61,7 +61,7 @@ You can deploy this app online for free using [Render](https://render.com)
    - `Procfile`
 
 - **Example `requirements.txt`:**
-```txt
+```bash
 flask
 flask-socketio
 cryptography
