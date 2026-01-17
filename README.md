@@ -56,9 +56,9 @@ You can deploy this app online for free using [Render](https://render.com)
 
 ### Step 1: Prepare Your Project
 - **Ensure you have these files in the root directory:**
- - `app.py`
- - `requirements.txt`
- - `Procfile`
+   - `app.py`
+   - `requirements.txt`
+   - `Procfile`
 
 - **Example `requirements.txt`:**
 ```txt
