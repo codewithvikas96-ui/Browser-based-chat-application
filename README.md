@@ -1,6 +1,7 @@
 # 🔐 End-to-End Encrypted Real-Time Chat Application
 
 A browser-based, end-to-end encrypted, real-time chat application built with Flask and WebSockets. All communication is handled in-memory without any database, ensuring privacy and fast performance.
+
 ---
 
 ## ✨ Features
@@ -68,19 +69,22 @@ gunicorn
 eventlet
 
 ```
-Example Procfile:
-
-txt
+- **Example `Procfile`:**
+```txt
 web: gunicorn --worker-class eventlet -w 1 app:app
-Step 2: Push Code to GitHub
-bash
+```
+
+### Step 2: Push Code to GitHub
+```bash
 git init
 git add .
 git commit -m "Initial commit"
 git branch -M main
-git remote add origin https://github.com/yourusername/encrypted-chat.git
+git remote add origin https://github.com/yourusername/Browser-based-chat-application.git
 git push -u origin main
-Step 3: Create Render Account
+```
+
+### Step 3: Create Render Account
 Go to render.com
 
 Sign up with GitHub and authorize access to your repo
