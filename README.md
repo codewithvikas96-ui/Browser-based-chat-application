@@ -314,3 +314,5 @@ For issues or questions, please open an issue on the repository.
 ---
 
 **Note**: This application is designed for demonstration and educational purposes. For production use, additional security measures, authentication, and persistence layers should be implemented.
+
+---
