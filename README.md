@@ -121,9 +121,9 @@ You can also use the application on your mobile phone without deploying it onlin
 ### Steps:
 1. **Find your system’s local IP address**
    - **On Windows:**  
-      Open Command Prompt and run:
+      Open Command Prompt and run:  
          ```bash
-         ipconfig
+          ipconfig
          ```
       Look for the `IPv4 Address` (e.g., `192.168.1.5`).
 
