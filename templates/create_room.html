@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Create Room - Encrypted Chat{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <a href="/" class="back-button">← Back</a>
+        <h1 class="form-title">Create a New Room</h1>
+        <p class="form-subtitle">Set up your secure chat room</p>
+        
+        <form id="createRoomForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required 
+                       placeholder="Enter your username" maxlength="20">
+            </div>
+            
+            <div class="form-group">
+                <label>Choose Your Avatar</label>
+                <div class="emoji-selector" id="emojiSelector">
+                    <button type="button" class="emoji-option" data-emoji="😀">😀</button>
+                    <button type="button" class="emoji-option" data-emoji="😎">😎</button>
+                    <button type="button" class="emoji-option" data-emoji="🤩">🤩</button>
+                    <button type="button" class="emoji-option" data-emoji="😊">😊</button>
+                    <button type="button" class="emoji-option" data-emoji="🥳">🥳</button>
+                    <button type="button" class="emoji-option" data-emoji="🤗">🤗</button>
+                    <button type="button" class="emoji-option" data-emoji="😇">😇</button>
+                    <button type="button" class="emoji-option" data-emoji="🦸">🦸</button>
+                    <button type="button" class="emoji-option" data-emoji="🧑‍💻">🧑‍💻</button>
+                    <button type="button" class="emoji-option" data-emoji="🎭">🎭</button>
+                    <button type="button" class="emoji-option" data-emoji="🎨">🎨</button>
+                    <button type="button" class="emoji-option" data-emoji="🦉">🦉</button>
+                    <button type="button" class="emoji-option" data-emoji="🐱">🐱</button>
+                    <button type="button" class="emoji-option" data-emoji="🦊">🦊</button>
+                    <button type="button" class="emoji-option" data-emoji="🐼">🐼</button>
+                    <button type="button" class="emoji-option" data-emoji="🐸">🐸</button>
+                    <button type="button" class="emoji-option" data-emoji="🦄">🦄</button>
+                    <button type="button" class="emoji-option" data-emoji="🌙">🌙</button>
+                    <button type="button" class="emoji-option" data-emoji="⭐">⭐</button>
+                    <button type="button" class="emoji-option" data-emoji="🔥">🔥</button>
+                </div>
+                <input type="hidden" id="selectedAvatar" name="avatar" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-full">
+                Create Room & Enter Chat
+            </button>
+        </form>
+        
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let selectedEmoji = null;
+    
+    // Emoji selection
+    document.querySelectorAll('.emoji-option').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.emoji-option').forEach(b => b.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedEmoji = this.dataset.emoji;
+            document.getElementById('selectedAvatar').value = selectedEmoji;
+        });
+    });
+    
+    // Form submission
+    document.getElementById('createRoomForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        if (!selectedEmoji) {
+            showError('Please select an avatar');
+            return;
+        }
+        
+        const username = document.getElementById('username').value.trim();
+        if (!username) {
+            showError('Please enter a username');
+            return;
+        }
+        
+        try {
+            const response = await fetch('/api/create-room', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    avatar: selectedEmoji
+                })
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                showError(error.error || 'Failed to create room');
+                return;
+            }
+            
+            const data = await response.json();
+            // Redirect to chat room
+            window.location.href = `/chat?room_id=${data.room_id}&username=${encodeURIComponent(data.username)}&avatar=${encodeURIComponent(data.avatar)}`;
+        } catch (error) {
+            showError('Network error. Please try again.');
+        }
+    });
+    
+    function showError(message) {
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}Join Room - Encrypted Chat{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <a href="/" class="back-button">← Back</a>
+        <h1 class="form-title">Join a Chat Room</h1>
+        <p class="form-subtitle">Enter an existing room to start chatting</p>
+        
+        <form id="joinRoomForm">
+            <div class="form-group">
+                <label for="roomId">Room ID</label>
+                <input type="text" id="roomId" name="roomId" required 
+                       placeholder="Enter room ID" maxlength="8" style="text-transform: uppercase;">
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required 
+                       placeholder="Enter your username" maxlength="20">
+            </div>
+            
+            <div class="form-group">
+                <label>Choose Your Avatar</label>
+                <div class="emoji-selector" id="emojiSelector">
+                    <button type="button" class="emoji-option" data-emoji="😀">😀</button>
+                    <button type="button" class="emoji-option" data-emoji="😎">😎</button>
+                    <button type="button" class="emoji-option" data-emoji="🤩">🤩</button>
+                    <button type="button" class="emoji-option" data-emoji="😊">😊</button>
+                    <button type="button" class="emoji-option" data-emoji="🥳">🥳</button>
+                    <button type="button" class="emoji-option" data-emoji="🤗">🤗</button>
+                    <button type="button" class="emoji-option" data-emoji="😇">😇</button>
+                    <button type="button" class="emoji-option" data-emoji="🦸">🦸</button>
+                    <button type="button" class="emoji-option" data-emoji="🧑‍💻">🧑‍💻</button>
+                    <button type="button" class="emoji-option" data-emoji="🎭">🎭</button>
+                    <button type="button" class="emoji-option" data-emoji="🎨">🎨</button>
+                    <button type="button" class="emoji-option" data-emoji="🦉">🦉</button>
+                    <button type="button" class="emoji-option" data-emoji="🐱">🐱</button>
+                    <button type="button" class="emoji-option" data-emoji="🦊">🦊</button>
+                    <button type="button" class="emoji-option" data-emoji="🐼">🐼</button>
+                    <button type="button" class="emoji-option" data-emoji="🐸">🐸</button>
+                    <button type="button" class="emoji-option" data-emoji="🦄">🦄</button>
+                    <button type="button" class="emoji-option" data-emoji="🌙">🌙</button>
+                    <button type="button" class="emoji-option" data-emoji="⭐">⭐</button>
+                    <button type="button" class="emoji-option" data-emoji="🔥">🔥</button>
+                </div>
+                <input type="hidden" id="selectedAvatar" name="avatar" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-full">
+                Join Chat Room
+            </button>
+        </form>
+        
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let selectedEmoji = null;
+    
+    // Auto-uppercase room ID
+    document.getElementById('roomId').addEventListener('input', function(e) {
+        e.target.value = e.target.value.toUpperCase();
+    });
+    
+    // Emoji selection
+    document.querySelectorAll('.emoji-option').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.emoji-option').forEach(b => b.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedEmoji = this.dataset.emoji;
+            document.getElementById('selectedAvatar').value = selectedEmoji;
+        });
+    });
+    
+    // Form submission
+    document.getElementById('joinRoomForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        if (!selectedEmoji) {
+            showError('Please select an avatar');
+            return;
+        }
+        
+        const roomId = document.getElementById('roomId').value.trim().toUpperCase();
+        const username = document.getElementById('username').value.trim();
+        
+        if (!roomId || !username) {
+            showError('Please fill in all fields');
+            return;
+        }
+        
+        // Verify room exists
+        try {
+            const verifyResponse = await fetch('/api/verify-room', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ room_id: roomId })
+            });
+            
+            if (!verifyResponse.ok) {
+                showError('Room not found. Please check the Room ID.');
+                return;
+            }
+            
+            // Redirect to chat room
+            window.location.href = `/chat?room_id=${roomId}&username=${encodeURIComponent(username)}&avatar=${encodeURIComponent(selectedEmoji)}`;
+        } catch (error) {
+            showError('Network error. Please try again.');
+        }
+    });
+    
+    function showError(message) {
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Chat Room - Encrypted Chat{% endblock %}
+
+{% block extra_head %}
+<meta name="room-id" content="{{ room_id }}">
+<meta name="username" content="{{ username }}">
+<meta name="avatar" content="{{ avatar }}">
+{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <div class="chat-header">
+        <div class="header-left">
+            <h2>🔒 Encrypted Chat</h2>
+            <p class="room-id-display">Room ID: <span id="roomIdDisplay">{{ room_id }}</span></p>
+        </div>
+        <div class="header-right">
+            <button id="copyRoomId" class="icon-button" title="Copy Room ID">
+                📋
+            </button>
+            <button id="darkModeToggle" class="icon-button" title="Toggle Dark Mode">
+                🌙
+            </button>
+            <a href="/" class="icon-button" title="Leave Chat">🚪</a>
+        </div>
+    </div>
+    
+    <div class="chat-body">
+        <div class="sidebar">
+            <div class="online-users">
+                <h3>👥 Online Users (<span id="userCount">0</span>)</h3>
+                <div id="userList" class="user-list">
+                    <!-- Users will be populated here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-main">
+            <div id="messagesContainer" class="messages-container">
+                <!-- Messages will be displayed here -->
+            </div>
+            
+            <div id="typingIndicator" class="typing-indicator" style="display: none;">
+                <span class="typing-avatar">👤</span>
+                <span class="typing-text">
+                    <span class="typing-dots">
+                        <span>.</span><span>.</span><span>.</span>
+                    </span>
+                </span>
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" id="messageInput" class="message-input" 
+                       placeholder="Type your message..." maxlength="500">
+                <button id="sendButton" class="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

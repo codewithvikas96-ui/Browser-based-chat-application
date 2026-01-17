@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Encrypted Chat - Secure Real-Time Communication{% endblock %}
+
+{% block content %}
+<div class="landing-container">
+    <div class="landing-content">
+        <div class="animated-logo">
+            <div class="logo-circle">🔒</div>
+            <div class="pulse-ring"></div>
+        </div>
+        
+        <h1 class="animated-title">
+            <span class="title-word">End-to-End</span>
+            <span class="title-word">Encrypted</span>
+            <span class="title-word">Chat</span>
+        </h1>
+        
+        <p class="animated-subtitle">
+            Secure, real-time messaging with zero database storage. 
+            All your conversations are encrypted and handled in memory.
+        </p>
+        
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🔐</div>
+                <h3>End-to-End Encryption</h3>
+                <p>Your messages are encrypted before transmission</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">⚡</div>
+                <h3>Real-Time</h3>
+                <p>Instant message delivery with WebSocket technology</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">👥</div>
+                <h3>Multi-User</h3>
+                <p>Multiple users can chat simultaneously</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎨</div>
+                <h3>Emoji Avatars</h3>
+                <p>Express yourself with personalized emoji avatars</p>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="/create-room" class="btn btn-primary slide-in-left">
+                <span class="btn-icon">✨</span>
+                Create a Room
+            </a>
+            <a href="/join-room" class="btn btn-secondary slide-in-right">
+                <span class="btn-icon">🚪</span>
+                Join a Chat
+            </a>
+        </div>
+    </div>
+    
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Add entrance animations
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.feature-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 200 * (index + 1));
+        });
+    });
+</script>
+{% endblock %}
