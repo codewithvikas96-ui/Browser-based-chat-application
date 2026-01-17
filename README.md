@@ -163,6 +163,23 @@ You can try the application directly here:
 
 ---
 
+## 📸 Screenshots
+
+**1. Landing Page**
+
+<img width="1917" height="1098" alt="Landing Page" src="https://github.com/user-attachments/assets/5c8aac00-af0c-4751-b6f7-cc8957d5a906" />
+
+**2. Create Room**
+<img width="1917" height="1096" alt="Create Rooom" src="https://github.com/user-attachments/assets/540fdbef-4622-4476-9de6-90a437f1a11f" />
+<img width="1919" height="1094" alt="Created Room" src="https://github.com/user-attachments/assets/f46bdb05-aa69-442d-9db5-52b8361b99bc" />
+
+
+**3. Join Room**
+<img width="1916" height="1108" alt="Join Room" src="https://github.com/user-attachments/assets/defe8f27-cca3-417a-bd71-a6f6004c3c11" />
+<img width="1919" height="1094" alt="Joined room" src="https://github.com/user-attachments/assets/919b38d7-6199-48a9-a650-db3a6c5ceeb2" />
+
+---
+
 ## 📝 Usage
 
 ### Creating a Room
