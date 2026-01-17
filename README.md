@@ -116,7 +116,7 @@ https://your-app-name.onrender.com
 ---
 
 ## 🌐 Live Demo
-You can try the application directly here:
+You can try the application directly here:  
 👉 Encrypted Chat App on Render [Click Here](https://browser-based-chat-application.onrender.com)
 
 ---
